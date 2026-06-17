@@ -1,0 +1,98 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.python-version
+env/
+venv/
+ENV/
+.venv/
+.ENV/
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+.pyre/
+.mypy_cache/
+.dmypy.json
+.dmypy.json
+.pytype/
+project.env
+.env
+.env.*
+!.env.example
+
+# FastAPI / Python build artifacts
+*.egg-info/
+build/
+dist/
+.eggs/
+.python-version
+
+# Svelte / Node
+node_modules/
+pnpm-lock.yaml
+yarn.lock
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.DS_Store
+
+# Vite build output
+dist/
+.build/
+
+# Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local docker-compose overrides
+docker-compose.override.yml
+
+# Logs
+*.log
+logs/
+
+# SQLite
+*.sqlite3
+*.db
+
+# ML/data artifacts
+data/
+datasets/
+models/
+checkpoints/
+artifacts/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+*.parquet
+*.csv
+*.duckdb
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# If any local Python virtualenvs are present in apps/api
+apps/api/venv/
+apps/api/.venv/

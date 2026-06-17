@@ -1,0 +1,30 @@
+services:
+  dess-api:
+    image: python:3.11-slim
+    working_dir: /app/apps/api
+    volumes:
+      - .:/app
+    environment:
+      - DESS_ASSET_REPO_ID=noirchoix/dess-bridge-physics-lab
+      - DESS_ASSET_REPO_TYPE=dataset
+      - DESS_ASSET_CACHE_DIR=./data
+      - HF_DOWNLOAD_ENABLED=true
+      - DESS_DUCKDB_PATH=./data/dess_physics/staging/dess_physics.duckdb
+      - DESS_CURATED_DIR=./data/dess_physics/curated/v1
+      - FRONTEND_ORIGIN=http://localhost:5173
+      - LLM_PROVIDER=offline
+    command: bash -lc "pip install -r requirements.txt && uvicorn main:app --host 0.0.0.0 --port 8000"
+    ports:
+      - "8000:8000"
+  dess-web:
+    image: node:20-alpine
+    working_dir: /app/apps/web
+    volumes:
+      - .:/app
+    environment:
+      - VITE_API_BASE_URL=http://localhost:8000
+    command: sh -lc "npm install --registry=https://registry.npmjs.org/ && npm run dev -- --host 0.0.0.0"
+    ports:
+      - "5173:5173"
+    depends_on:
+      - dess-api
