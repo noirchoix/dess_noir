@@ -1,16 +1,25 @@
 # DESS Bridge Physics Lab
 
-Portfolio App 2 in the chemistry deployment series.
+An artifact-governed scientific model-serving and explanation console for DESS bridge-physics outputs. The runtime hydrates versioned model/data bundles, serves stored predictions and physical-scoring evidence through DuckDB, ranks candidates deterministically, and makes uncertainty/fallback behavior explicit when validated live inference is unavailable.
 
-This is a **FastAPI + SvelteKit** lab-console application for exploring DESS bridge physics artifacts. It exposes stored DESS66x8 outputs, QC status, metric summaries, SAPT/CCSD(T)-style prediction rows, reactant/product physics scores, candidate rank scores, and an explanation layer for interpreting a scoring run.
+## Engineering profile
 
-The app is designed for clean portfolio deployment: GitHub stores source code only, while the DESS artifact bundle is hosted on Hugging Face and downloaded into a local runtime cache.
+This repository demonstrates:
 
-## Portfolio positioning
+- Versioned Hugging Face hydration for DuckDB/Parquet/JSON, checkpoints, metrics, predictions, and scoring artifacts
+- Read-only analytical serving for metrics, predictions, reactant/product views, rankings, and explanations
+- Deterministic candidate scoring over stored physical/stability/uncertainty evidence
+- Explicit separation between numerical evidence and optional narrative explanation
+- Known-case stored model outputs versus uncertainty-inflated artifact prior for unseen inputs
+- FastAPI + SvelteKit runtime with validation/smoke pathways
 
-This app demonstrates artifact-backed scientific ML deployment. It is not presented as a live DESS graph-neural-network inference engine. Exact artifact matches use stored DESS bridge scores; new SMILES use a deterministic artifact-calibrated prior unless a future live inference adapter is added.
+## Reliability and scope
 
-Scientific disclaimer: this app is a portfolio/demo tool for physics-informed chemistry exploration. It is not laboratory validation, regulatory validation, or production formulation approval software. Scores should be treated as screening and prioritization signals.
+The runtime must not be described as validated live GNN inference for arbitrary unseen compounds. Unknown inputs are deliberately handled through an explicitly labelled artifact-calibrated prior when live inference is not established.
+
+## Related artifacts
+
+- **Hugging Face artifacts/data:** https://huggingface.co/datasets/noirchoix/dess-bridge-physics-lab
 
 ## Stack
 
@@ -153,7 +162,7 @@ npm run build
 
 ## Deployment recommendation
 
-Recommended portfolio setup:
+Recommended deployment:
 
 - Backend: Render, Railway, or Fly.io
 - Frontend: Vercel or Netlify
